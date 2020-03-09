@@ -5,9 +5,9 @@ module GeekyBot
         desc 'This is a slack utility bot for a tech savvy. You can access various services i.e 
            -> getting job updates
            -> Programming memes
-           -> Inspitional quotes
-           -> Css tricks Articles
-           -> More features we be coming soon
+           -> Css tricks Feeds
+           -> Awesome tech related articles
+           -> More features will be coming soon
         .'
   
         command :jobs? do
