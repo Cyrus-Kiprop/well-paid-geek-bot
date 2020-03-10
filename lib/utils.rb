@@ -2,7 +2,7 @@ require 'rss'
 require 'open-uri'
 
 module Helperable
-  def command_body(url, post_text, client, data, match)
+  def command_body(url, post_text, client, data, _match)
     client.say(channel: data.channel, text: 'Please wait ...')
     rss = rss_parser(xml_parser(url))
     rss[1..20].each do |item|
@@ -17,10 +17,10 @@ module Helperable
   end
 
   def rss_parser(xml)
-    rss = RSS::Parser.parse(xml, false).items
+    RSS::Parser.parse(xml, false).items
   end
 
   def xml_parser(url)
-    open(url).read
+    URI.parse(url).open
   end
 end

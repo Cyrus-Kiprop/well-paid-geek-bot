@@ -6,9 +6,9 @@ class TestClass
 end
 
 RSpec.describe MemeScrapper do
-  let (:url_arr) { ['https://twitter.com/sigsegmeme'] }
-  let (:t_class) { TestClass.new }
-  let (:url) { 'https://hackernoon.com/tagged/ruby/feed' }
+  let(:url_arr) { ['https://twitter.com/sigsegmeme'] }
+  let(:t_class) { TestClass.new }
+  let(:url) { 'https://hackernoon.com/tagged/ruby/feed' }
 
   describe '#scrapper' do
     it 'returns an array of containing all the images of the scrapped website' do

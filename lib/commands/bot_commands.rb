@@ -3,12 +3,11 @@ require 'open-uri'
 require_relative '../scrapper.rb'
 require_relative '../utils.rb'
 
-include MemeScrapper
-include Helperable
-
 module WellPaidGeek
   module Commands
     class DefineCommands < SlackRubyBot::Commands::Base
+      include MemeScrapper
+      include Helperable
       command 'jobs?' do |client, data, match|
         command_body('https://stackoverflow.com/jobs/feed', 'Good Luck with your job search', client, data, match)
       end
@@ -28,6 +27,7 @@ module WellPaidGeek
 
     class Memes < SlackRubyBot::Commands::Base
       include MemeScrapper
+      include Helperable
       command 'memes' do |client, data, _match|
         msg_printer('Please wait...', client, data)
         result = meme_extractor
@@ -43,6 +43,8 @@ module WellPaidGeek
     end
 
     class OtherCommands < SlackRubyBot::Commands::Base
+      include MemeScrapper
+      include Helperable
       command 'Hi?' do |client, data, _match|
         client.say(Channel: data.channel, text: Greeting.say_hello)
       end
