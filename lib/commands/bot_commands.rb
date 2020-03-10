@@ -6,8 +6,9 @@ require_relative '../utils.rb'
 module WellPaidGeek
   module Commands
     class DefineCommands < SlackRubyBot::Commands::Base
-      include MemeScrapper
-      include Helperable
+      extend MemeScrapper
+      extend Helperable
+
       command 'jobs?' do |client, data, match|
         command_body('https://stackoverflow.com/jobs/feed', 'Good Luck with your job search', client, data, match)
       end
@@ -26,9 +27,9 @@ module WellPaidGeek
     end
 
     class Memes < SlackRubyBot::Commands::Base
-      include MemeScrapper
-      include Helperable
-      command 'memes' do |client, data, _match|
+      extend MemeScrapper
+      extend Helperable
+      command 'memes?' do |client, data, _match|
         msg_printer('Please wait...', client, data)
         result = meme_extractor
         if result?(result)
@@ -43,8 +44,8 @@ module WellPaidGeek
     end
 
     class OtherCommands < SlackRubyBot::Commands::Base
-      include MemeScrapper
-      include Helperable
+      extend MemeScrapper
+      extend Helperable
       command 'Hi?' do |client, data, _match|
         client.say(Channel: data.channel, text: Greeting.say_hello)
       end
