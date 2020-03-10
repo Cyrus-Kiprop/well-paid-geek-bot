@@ -3,10 +3,9 @@ require 'open-uri'
 require_relative '../scrapper.rb'
 require_relative '../utils.rb'
 
-include MemeScrapper
-include Helperable
-
 module WellPaidGeek
+  include MemeScrapper
+  include Helperable
   module Commands
     class DefineCommands < SlackRubyBot::Commands::Base
       command 'jobs?' do |client, data, match|

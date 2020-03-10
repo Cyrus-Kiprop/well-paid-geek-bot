@@ -32,10 +32,9 @@ RSpec.describe MemeScrapper do
     it 'Return a true value if the result arr not empty' do
       expect(t_class.result?(t_class.meme_extractor)).to be true
     end
-    
+
     it 'Should return false if the array is empty' do
       expect(t_class.result?([])).to be false
     end
   end
-
 end
