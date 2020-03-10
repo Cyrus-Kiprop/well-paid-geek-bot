@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem "rails"
 
@@ -11,3 +11,4 @@ gem 'celluloid-io'
 gem 'slack-ruby-bot'
 gem 'dotenv'
 gem 'puma'
+gem 'nokogiri'

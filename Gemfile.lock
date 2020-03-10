@@ -40,9 +40,12 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
+    mini_portile2 (2.4.0)
     minitest (5.14.0)
     multipart-post (2.1.1)
     nio4r (2.5.2)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
     parser (2.7.0.4)
       ast (~> 2.4.0)
@@ -85,6 +88,7 @@ PLATFORMS
 DEPENDENCIES
   celluloid-io
   dotenv
+  nokogiri
   puma
   rubocop
   slack-ruby-bot
