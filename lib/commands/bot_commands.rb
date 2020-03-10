@@ -35,8 +35,8 @@ module WellPaidGeek
           result[1..20].each do |item|
             msg_printer(item, client, data)
           end
-        elsif
-           msg_printer('No memes at the moment', client, data)
+        else
+          msg_printer('No memes at the moment', client, data)
         end
         msg_printer('Latest memes in town', client, data)
       end
