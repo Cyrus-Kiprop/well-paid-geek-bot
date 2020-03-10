@@ -1,4 +1,4 @@
-# Rspec enumerable Testing
+# WellPaidGeek slack BOT!!
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
