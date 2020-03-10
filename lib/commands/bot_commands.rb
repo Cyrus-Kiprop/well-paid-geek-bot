@@ -1,77 +1,46 @@
 require 'rss'
 require 'open-uri'
 require_relative '../scrapper.rb'
-
+require_relative '../utils.rb'
 
 include MemeScrapper
-
-
-
+include Helperable
 
 module WellPaidGeek
   module Commands
     class DefineCommands < SlackRubyBot::Commands::Base
       command 'jobs?' do |client, data, match|
-        url = ''
-        client.say(channel: data.channel, text: 'Please wait ...')
-        rss = RSS::Parse.parse(open(url), false).items
-        rss[1..20].each do |item|
-          client.say(channel: data.channel, text: item.link)
-        end
-        client.say(channel: data.channel, text: 'Latest job description form stack overflow')
+        command_body('https://stackoverflow.com/jobs/feed', 'Good Luck with your job search', client, data, match)
       end
-    end
 
-      class Memes < SlackRubyBot::Commands::Base
-        include MemeScrapper
-        
-        command 'memes?' do |client, data, match|
-          url_arr = ['https://twitter.com/sigsegmeme']
-
-          client.say(channel: data.channel, text: 'Please wait ...')
-          
-          elements = scrapper(url_arr)
-          result = extract_img_src(elements)
-          if result.size.positive?
-            result[1..20].each do |item|
-              client.say(channel: data.channel, text: item)
-            end
-          elsif
-              client.say(channel: data.channel, text: 'No memes at the moment')
-          end
-          client.say(channel: data.channel, text: 'Latest memes in town')
-      end
-    end
-
-    class GetLatestArticles < SlackRubyBot::Commands::Base
-      command 'articles?' do |client, data, _match|
-        client.say(channel: data.channel, text: 'Please wait...')
-
+      command 'articles?' do |client, data, match|
         url = 'https://hackernoon.com/tagged/ruby/feed'
-        rss = RSS::Parser.parse(open(url).read, false).items
+        command_body(url, 'Good Luck with your job search', client, data, match)
+        msg_printer('<---- HAPPY CODING!!! ---->', client, data)
+      end
 
-        rss[1..20].each do |item|
-          client.say(channel: data.channel, text: item.link)
-        end
-        client.say(channel: data.channel, text: 'These are the latest articles from Hackernoon ')
-        client.say(channel: data.channel, text: '<---- HAPPY CODING!!! ---->')
+      command 'css_tricks?' do |client, data, match|
+        url = 'https://css-tricks.com/feed/'
+        command_body(url, 'These are the latest css tricks in town', client, data, match)
+        msg_printer('<---- HAPPY CODING!!! ---->', client, data)
       end
     end
 
-    class CssTricks < SlackRubyBot::Commands::Base
-      command 'css_tricks?' do |client, data, _match|
-        client.say(channel: data.channel, text: 'Please wait...')
-
-        url = 'https://css-tricks.com/feed/'
-        rss = RSS::Parser.parse(open(url).read, false).items
-
-        rss[1..20].each do |item|
-          client.say(channel: data.channel, text: item.link)
+    class Memes < SlackRubyBot::Commands::Base
+      include MemeScrapper
+      command 'memes' do |client, data, _match|
+        msg_printer('Please wait...', client, data)
+        result = meme_extractor
+        if result?(result)
+          result[1..20].each do |item|
+            msg_printer(item, client, data)
+          end
+        elsif
+           msg_printer('No memes at the moment', client, data)
         end
-        client.say(channel: data.channel, text: 'These are the latest css tricks in town ')
-        client.say(channel: data.channel, text: '<---- HAPPY CODING!!! ---->')
+        msg_printer('Latest memes in town', client, data)
       end
-      end
+    end
 
     class OtherCommands < SlackRubyBot::Commands::Base
       command 'Hi?' do |client, data, _match|
@@ -86,20 +55,3 @@ class Greeting
     'Hello this is well paid geek bot'
   end
 end
-
-
-# url_arr = ['https://twitter.com/sigsegmeme']
-
-# # client.say(channel: data.channel, text: 'Please wait ...')
-
-# elements = scrapper(url_arr)
-# result = extract_img_src(elements)
-# if result.size.positive?
-#   result[1..20].each do |item|
-#    p true
-#     # client.say(channel: data.channel, text: item.link)
-#   end
-# elsif
-#     # client.say(channel: data.channel, text: 'No memes at the moment')
-#     false
-# end

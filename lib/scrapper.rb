@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'set'
 
 module MemeScrapper
 
@@ -18,6 +19,19 @@ module MemeScrapper
             end
         end
         img_src
+    end
+
+
+    def meme_extractor
+
+        url_arr = ['https://twitter.com/sigsegmeme']
+        elements = scrapper(url_arr)
+        result = extract_img_src(elements)
+    end
+
+    def result?(result)
+        return true if result.size.positive?
+        false
     end
 end
 
