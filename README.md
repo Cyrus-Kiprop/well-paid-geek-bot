@@ -30,7 +30,7 @@ Slack Bot for the tech Savvy. The bot was built using ruby. The bot was designed
 
 
 
-![screenshot](./assets/tic-tac-toe.png)
+![screenshot](./assets/slack_ruby_bot.jpeg)
 
 ## Gems
 - puma
@@ -49,7 +49,7 @@ on your computer
 
 ## Pre-installation
 - create a new slack workspace [here](https://slack.com/create#email) that you would like to embed the bot.
-- configure a newbot for your workspace.
+- configure a new bot for your workspace.check [here](http://slack.com/services/new/bot) for more information.
 - Name the bot wellpaidgeek and copy the API_KEY. click [here](https://slack.com/intl/en-ke/help/articles/115005265703-Create-a-bot-for-your-workspace) for more instruction on how to do that.
 - The API_KEY will be important for the steps that follow.
 - Create at least 3 channels on your newly created workspace. i.e (memes, jobs, articles and csstricks ) etc
@@ -107,4 +107,4 @@ Give a ⭐️ if you like this BOT!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](LICENSE) licensed.

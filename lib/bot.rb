@@ -21,7 +21,7 @@ module GeekyBot
 
       command :css_tricks? do
         title 'css_tricks?'
-        desc 'offers top notch articles for frontend development development'
+        desc 'offers top notch articles for frontend development'
       end
 
       command :memes? do
