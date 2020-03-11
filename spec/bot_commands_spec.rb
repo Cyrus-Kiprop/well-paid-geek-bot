@@ -10,7 +10,7 @@ RSpec.describe WellPaidGeek::Commands::DefineCommands do
   subject { app }
 
   it 'Return  multiple jobs links and display it to the user' do
-    VCR.use_cassette('jobs_cassette', { record: :new_episodes }) do
+    VCR.use_cassette('jobs_cassette', record: :new_episodes) do
       expect(message: "#{SlackRubyBot.config.user} jobs?", channel: 'jobs').to respond_with_slack_messages([])
     end
   end
@@ -41,8 +41,6 @@ RSpec.describe WellPaidGeek::Commands::OtherCommands do
 
   subject { app }
   it 'returns an array of memes from a twitter channel' do
-    #   VCR.use_cassette('memes_cassette') do
     expect(message: "#{SlackRubyBot.config.user} Hi?", channel: 'memes').to respond_with_slack_messages([])
-    #   end
   end
 end
